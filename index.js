@@ -1,37 +1,31 @@
-var express = require('express');
+var express = require('express'),
+	ejs = require("ejs"),
+	bodyParser = require("body-parser"),
+	methodOverride = require("method-override");
 
 var app = express();
 
+app.set("view engine", "ejs");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.get('/', function(req, res) {
-   res.send("<h1>Instructions:</h1><p>To add numbers, visit /sum/[first number]/[second number]</br>To subtract numbers, visit sub/[first number]/[secondnumber]</br>To multiply numbers, visit /mult/[first number]/[second number]</br>To divide numbers, visit /div/[first number]/[second number]</p>") // Your HTML would go here. 
-});
+	res.render("index", {tsum: "", tsub: "", tmult: "", tdiv: ""});
+})
 
-app.get('/sum/:x/:y', function(req, res) {
-	var x = Number(req.params.x);
-	var y = Number(req.params.y);
-	var sum = x + y;
-	res.send(x + " + " + y + " = " + sum);
-});
 
-app.get('/sub/:x/:y', function(req, res) {
-	var x = Number(req.params.x);
-	var y = Number(req.params.y);
-	var sum = x - y;
-	res.send(x + " - " + y + " = " + sum);
-});
+app.post('/', function(req, res) {
+	console.log(req.body);
+	var sum = Number(req.body.firstSum) + Number(req.body.secondSum) || "";
+	var sub = Number(req.body.firstSub) - Number(req.body.secondSub) || "";
+	var mult = Number(req.body.firstMult) * Number(req.body.secondMult) || "";
+	var div = Number(req.body.firstDiv) / Number(req.body.secondDiv) || "";
+	res.render("index", {tsum : sum, tsub : sub, tmult : mult, tdiv : div});
+})
 
-app.get('/mult/:x/:y', function(req, res) {
-	var x = Number(req.params.x);
-	var y = Number(req.params.y);
-	var sum = x * y;
-	res.send(x + " * " + y + " = " + sum);
-});
+// app.post('/sum', function(res,req) {
+// 	res.redirect('/');
+// })
 
-app.get('/div/:x/:y', function(req, res) {
-	var x = Number(req.params.x);
-	var y = Number(req.params.y);
-	var sum = x / y;
-	res.send(x + " / " + y + " = " + sum);
-});
 
 app.listen(3000);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Stuff with Numbers!</title>
+	 <script src="https:ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Add Numbers:</h1>
+	<h2>Type numbers into the boxes below then hit the "submit" button to add them</h2>
+	<form action="/" method="POST">
+		<input type="text" name="firstSum" id="sum1" placeholder="First Number">
+		<input type="text" name="secondSum" id="sum2" placeholder="Second Number">
+		<input type="submit" value="Add!">
+	</form>
+	<p>Answer: <%= tsum %></p>
+	<h1>Subtract Numbers:</h1>
+	<h2>Type numbers into the boxes below then hit the "submit" button to subtract them</h2>
+	<form action="/" method="POST">
+		<input type="text" name="firstSub" placeholder="First Number">
+		<input type="text" name="secondSub" placeholder="Second Number">
+		<input type="submit" value="Subtract!">
+	</form>
+	<p>Answer: <%= tsub %></p>
+	<h1>Multiply Numbers:</h1>
+	<h2>Type numbers into the boxes below then hit the "submit" button to multiply them</h2>
+	<form action="/" method="POST">
+		<input type="text" name="firstMult" placeholder="First Number">
+		<input type="text" name="secondMult" placeholder="Second Number">
+		<input type="submit" value="Multiply!">
+	</form>
+	<p>Answer: <%= tmult %></p>
+	<h1>Divide Numbers:</h1>
+	<h2>Type numbers into the boxes below then hit the "submit" button to divide them</h2>
+	<form action="/" method="POST">
+		<input type="text" name="firstDiv" placeholder="First Number">
+		<input type="text" name="secondSDiv" placeholder="Second Number">
+		<input type="submit" value="Divide!">
+	</form>
+	<p>Answer: <%= tdiv %></p>
+</body>
+</html>
